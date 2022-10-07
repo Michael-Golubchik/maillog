@@ -25,8 +25,7 @@ open(FLogFile, "<:utf8", "$LogFileName");
 close(FDatFile);
 
 #Перебираем строки лога
-#for ($FileStrI = 0; $FileStrI < @FileStr; $FileStrI++)
-for ($FileStrI = 0; $FileStrI < 400; $FileStrI++) { 
+for ($FileStrI = 0; $FileStrI < @FileStr; $FileStrI++) {
 
   #Формируем массив элементов лога
   @FileStrEl = split(/ /,$FileStr[$FileStrI]);
@@ -37,6 +36,7 @@ for ($FileStrI = 0; $FileStrI < 400; $FileStrI++) {
   if ($FileStr[$FileStrI] =~ /\s.+?\s(.+)/) {
   
     $StrWithoutTime = $1;
+    $StrWithoutTime =~ s!'!''!g;
   }
   else {
   
